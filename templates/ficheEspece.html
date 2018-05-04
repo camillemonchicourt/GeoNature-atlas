@@ -74,7 +74,13 @@
                             <span class="glyphicon glyphicon-search" id="zoomPhotos"> </span>
                             <a href="{{firstPhoto.path}}" data-lightbox="imageSet" data-title="{{firstPhoto.title}} &copy; {{firstPhoto.author}}">
                                 <img id="mainImg" src="{{firstPhoto.path}}" style="width:100%;" alt="{{firstPhoto.title}} &copy; {{firstPhoto.author}}">
-                                <p class="imgDescription main">{{firstPhoto.title}} &copy; {{firstPhoto.author}}</p>
+                                {% if firstPhoto.description != '' %}
+				   <p class="imgDescription main">{{firstPhoto.title}} &copy; {{firstPhoto.author|striptags}}
+				   &nbsp;&nbsp;
+				   <span class="glyphicon glyphicon-info-sign" style="color:white;" data-toggle="tooltip" data-placement="top" title="{{firstPhoto.description}}"></span></p>
+                                {% else %}
+				   <p class="imgDescription main">{{firstPhoto.title}} &copy; {{firstPhoto.author|striptags}}</p>
+                                {% endif %}
                             </a>
                         </div>
 
@@ -359,7 +365,13 @@
                                 <a href="{{photo.path}}" data-lightbox="imageSet" data-title="{{photo.title}}  &copy; {{photo.author}}" >
                                   <div class="slider-size" style="background-image: url({{photo.path}})" alt="{{photo.title}} &copy; {{photo.author}}">
                                       <div class="carousel-caption">
-                                        {{photo.title}} &copy; {{photo.author}} 
+					{% if photo.description != '' %}
+					      {{photo.title}} &copy; {{photo.author}}
+					      &nbsp;&nbsp;
+					      <span class="glyphicon glyphicon-info-sign" style="color:white;" data-toggle="tooltip" data-placement="top" title="{{firstPhoto.description}}"></span></p>
+					{% else %}
+					      {{photo.title}} &copy; {{photo.author}}
+					{% endif %}
                                       </div>
                                   </div>
                                 </a>
