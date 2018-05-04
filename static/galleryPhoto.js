@@ -29,9 +29,17 @@ function generateHtmlPhoto(photos){
 	  			photo.title = photo.title.split("'").join("&#39;");
 			}
 
+				
+	  		if (photo.description.length > 1){
+				infos = '&nbsp;&nbsp;<a href="#"><span class="glyphicon glyphicon-info-sign" style="color:white;" data-toggle="tooltip" data-placement="top" title="' + photo.description + '"></span></a>';
+			}
+	  		else {
+				infos = '';
+			}
+				
 			onePhoto = "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12 thumbnail-col photo-espece '> \
 						  <div class='zoom-wrapper' > \
-					 		<a href='"+photo.path+"' data-lightbox='imageSet' data-title='"+photo.title +" &copy; "+photo.author+"' cdRef='"+photo.cd_ref+"'>\
+					 		<a href='"+photo.path+"' data-lightbox='imageSet' data-title='"+photo.title +" &copy; "+photo.author+infos+"' cdRef='"+photo.cd_ref+"'>\
 								<div class='img-custom-medias' style='background-image:url("+photo.path+")' alt='"+photo.name+"'> </div> \
 								<div class='stat-medias-hovereffet'> \
 						    		 <h2 class='overlay-obs'>"+photo.name+" </br> </br>"+photo.nb_obs+" observations </h2>  <img src='"+configuration.URL_APPLICATION+"/static/images/eye.png'></div> </a> </div> </div> </div>"
